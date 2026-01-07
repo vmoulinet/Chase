@@ -44,19 +44,35 @@ public class TriangleAgent : MonoBehaviour
         if (!agentA || !agentB || !manager)
             return;
 
-        Vector3 desiredPosition = ComputeDesiredPosition();
-        float distanceToTarget = Vector3.Distance(transform.position, desiredPosition);
-
-        satisfied = (distanceToTarget <= manager.toleranceRadius && velocity.magnitude < 0.1f);
-
-        if (!satisfied)
-            ApplyMovement(desiredPosition);
+        if (!manager.spiralActive)
+        {
+            UpdateTriangleMode();
+        }
+        else
+        {
+            UpdateSpiralMode();
+        }
 
         velocity *= damping;
         transform.position += velocity * Time.deltaTime;
 
         UpdateRotation();
         UpdateLines();
+    }
+
+    // =========================
+    // TRIANGLE MODE
+    // =========================
+
+    void UpdateTriangleMode()
+    {
+        Vector3 desiredPosition = ComputeDesiredPosition();
+        float distanceToTarget = Vector3.Distance(transform.position, desiredPosition);
+
+        satisfied = (distanceToTarget <= manager.toleranceRadius && velocity.magnitude < 0.1f);
+
+        if (!satisfied)
+            ApplyTriangleMovement(desiredPosition);
     }
 
     Vector3 ComputeDesiredPosition()
@@ -89,20 +105,42 @@ public class TriangleAgent : MonoBehaviour
         return mid + normal * finalDist;
     }
 
-    void ApplyMovement(Vector3 desiredPosition)
+    void ApplyTriangleMovement(Vector3 desiredPosition)
     {
         Vector3 force = (desiredPosition - transform.position) * attractionStrength;
 
         float noise = Mathf.PerlinNoise(Time.time * noiseFrequency, GetInstanceID()) - 0.5f;
         Vector3 noiseVector = new Vector3(noise, 0f, -noise) * noiseStrength;
-
         force += noiseVector;
 
         Vector3 acceleration = force / Mathf.Max(0.0001f, mass);
         velocity += acceleration * Time.deltaTime;
-
         velocity = Vector3.ClampMagnitude(velocity, manager.maxSpeed);
     }
+
+    // =========================
+    // SPIRAL MODE
+    // =========================
+
+    void UpdateSpiralMode()
+    {
+        Vector3 toCenter = transform.position - manager.spiralCenter;
+        toCenter.y = 0f;
+
+        if (toCenter.sqrMagnitude < 0.0001f)
+            return;
+
+        Vector3 tangent = new Vector3(-toCenter.z, 0f, toCenter.x).normalized;
+        Vector3 force = tangent * manager.spiralStrength;
+
+        Vector3 acceleration = force / Mathf.Max(0.0001f, mass);
+        velocity += acceleration * Time.deltaTime;
+        velocity = Vector3.ClampMagnitude(velocity, manager.maxSpeed);
+    }
+
+    // =========================
+    // ROTATION
+    // =========================
 
     void UpdateRotation()
     {
@@ -119,6 +157,10 @@ public class TriangleAgent : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
     }
+
+    // =========================
+    // VISUAL LINKS
+    // =========================
 
     LineRenderer CreateLineRenderer(string name)
     {
@@ -159,11 +201,18 @@ public class TriangleAgent : MonoBehaviour
         lineToB.SetPosition(1, agentB.position);
     }
 
+    // =========================
+    // DEBUG
+    // =========================
+
     void OnDrawGizmos()
     {
         if (!agentA || !agentB || !manager) return;
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(ComputeDesiredPosition(), manager.toleranceRadius);
+        Gizmos.color = manager.spiralActive ? Color.magenta : Color.yellow;
+        Gizmos.DrawWireSphere(
+            manager.spiralActive ? manager.spiralCenter : ComputeDesiredPosition(),
+            manager.toleranceRadius
+        );
     }
 }

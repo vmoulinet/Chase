@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4330625957395547242}
   - component: {fileID: 6860584672513662075}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Miror_root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +62,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -83,9 +88,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4048332839621355275
 BoxCollider:
@@ -115,10 +122,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3608041507549099946}
-  serializedVersion: 4
-  m_Mass: 38.51
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  serializedVersion: 5
+  m_Mass: 1.34
+  m_LinearDamping: 3.25
+  m_AngularDamping: 6.47
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -156,7 +163,7 @@ MonoBehaviour:
   noiseStrength: 0.1
   noiseFrequency: 1
   rotationSpeed: 4
-  lineWidth: 0.002
+  lineWidth: 0.005
 --- !u!1001 &7098962330772726831
 PrefabInstance:
   m_ObjectHideFlags: 0

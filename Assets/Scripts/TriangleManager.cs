@@ -11,6 +11,17 @@ public class TriangleManager : MonoBehaviour
     public float maxSpeed = 2f;
     public float toleranceRadius = 1f;
 
+    [Header("Spiral Mode")]
+    public float spiralInterval = 30f;
+    public float spiralDuration = 6f;
+    public float spiralStrength = 2f;
+
+    [HideInInspector] public bool spiralActive = false;
+    [HideInInspector] public Vector3 spiralCenter;
+
+    float intervalTimer = 0f;
+    float spiralTimer = 0f;
+
     void Start()
     {
         if (agents == null || agents.Length < 3)
@@ -20,6 +31,41 @@ public class TriangleManager : MonoBehaviour
         }
 
         AssignPairs();
+    }
+
+    void Update()
+    {
+        intervalTimer += Time.deltaTime;
+
+        if (!spiralActive && intervalTimer >= spiralInterval)
+            StartSpiral();
+
+        if (spiralActive)
+        {
+            spiralTimer += Time.deltaTime;
+            if (spiralTimer >= spiralDuration)
+                StopSpiral();
+        }
+    }
+
+    void StartSpiral()
+    {
+        Debug.Log("=== SPIRAL MODE ===");
+        intervalTimer = 0f;
+        spiralTimer = 0f;
+        spiralActive = true;
+
+        spiralCenter = Vector3.zero;
+        foreach (var agent in agents)
+            spiralCenter += agent.transform.position;
+
+        spiralCenter /= agents.Length;
+    }
+
+    void StopSpiral()
+    {
+        Debug.Log("=== TRIANGLE MODE ===");
+        spiralActive = false;
     }
 
     void AssignPairs()
