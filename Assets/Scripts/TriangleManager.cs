@@ -5,31 +5,35 @@ public class TriangleManager : MonoBehaviour
 {
     public TriangleAgent[] agents;
 
-    [Header("Global Triangle Parameters")]
-    public float minDistance = 1.0f;
-    public float maxDistance = 2.0f;
-    public float maxSpeed = 2f;
-    public float toleranceRadius = 1f;
+    public enum GlobalMode { Triangle, Spiral, Circle }
+    public enum CirclePhase { Move, Orient, Hold }
 
-    [Header("Spiral Mode")]
+    public GlobalMode currentMode = GlobalMode.Triangle;
+    public CirclePhase circlePhase;
+
+    [Header("Triangle")]
+    public float minDistance = 1f;
+    public float maxDistance = 2f;
+    public float maxSpeed = 2f;
+    public float toleranceRadius = 0.05f;
+
+    [Header("Spiral")]
     public float spiralInterval = 30f;
     public float spiralDuration = 6f;
     public float spiralStrength = 2f;
 
-    [HideInInspector] public bool spiralActive = false;
-    [HideInInspector] public Vector3 spiralCenter;
+    [Header("Circle")]
+    public float circleRadius = 4f;
+    public float circleHoldDuration = 2f;
 
-    float intervalTimer = 0f;
-    float spiralTimer = 0f;
+    [HideInInspector] public Vector3 center;
+
+    float intervalTimer;
+    float spiralTimer;
+    float circleHoldTimer;
 
     void Start()
     {
-        if (agents == null || agents.Length < 3)
-        {
-            Debug.LogError("TriangleManager : il faut au moins 3 agents.");
-            return;
-        }
-
         AssignPairs();
     }
 
@@ -37,35 +41,121 @@ public class TriangleManager : MonoBehaviour
     {
         intervalTimer += Time.deltaTime;
 
-        if (!spiralActive && intervalTimer >= spiralInterval)
+        if (currentMode == GlobalMode.Triangle && intervalTimer >= spiralInterval)
             StartSpiral();
 
-        if (spiralActive)
+        if (currentMode == GlobalMode.Spiral)
         {
             spiralTimer += Time.deltaTime;
             if (spiralTimer >= spiralDuration)
-                StopSpiral();
+                StartCircle();
         }
+
+        if (currentMode == GlobalMode.Circle)
+            UpdateCircle();
     }
 
     void StartSpiral()
     {
         Debug.Log("=== SPIRAL MODE ===");
+
         intervalTimer = 0f;
         spiralTimer = 0f;
-        spiralActive = true;
+        currentMode = GlobalMode.Spiral;
 
-        spiralCenter = Vector3.zero;
-        foreach (var agent in agents)
-            spiralCenter += agent.transform.position;
-
-        spiralCenter /= agents.Length;
+        ComputeCenter();
     }
 
-    void StopSpiral()
+    void StartCircle()
+    {
+        Debug.Log("=== CIRCLE MODE ===");
+
+        currentMode = GlobalMode.Circle;
+        circlePhase = CirclePhase.Move;
+        circleHoldTimer = 0f;
+
+        ComputeCenter();
+        ComputeCircleTargets();
+    }
+
+    void StopCircle()
     {
         Debug.Log("=== TRIANGLE MODE ===");
-        spiralActive = false;
+        currentMode = GlobalMode.Triangle;
+    }
+
+    void UpdateCircle()
+    {
+        if (circlePhase == CirclePhase.Move)
+        {
+            if (AllAtTargets())
+                circlePhase = CirclePhase.Orient;
+        }
+        else if (circlePhase == CirclePhase.Orient)
+        {
+            if (AllOriented())
+                circlePhase = CirclePhase.Hold;
+        }
+        else if (circlePhase == CirclePhase.Hold)
+        {
+            circleHoldTimer += Time.deltaTime;
+            if (circleHoldTimer >= circleHoldDuration)
+                StopCircle();
+        }
+    }
+
+    void ComputeCenter()
+    {
+        center = Vector3.zero;
+        foreach (var a in agents)
+            center += a.transform.position;
+        center /= agents.Length;
+    }
+
+    void ComputeCircleTargets()
+    {
+        List<Vector3> slots = new List<Vector3>();
+
+        for (int i = 0; i < agents.Length; i++)
+        {
+            float a = Mathf.PI * 2f * i / agents.Length;
+            slots.Add(center + new Vector3(Mathf.Cos(a), 0f, Mathf.Sin(a)) * circleRadius);
+        }
+
+        foreach (var agent in agents)
+        {
+            Vector3 best = slots[0];
+            float bestDist = Vector3.Distance(agent.transform.position, best);
+
+            foreach (var s in slots)
+            {
+                float d = Vector3.Distance(agent.transform.position, s);
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    best = s;
+                }
+            }
+
+            agent.circleTarget = best;
+            slots.Remove(best);
+        }
+    }
+
+    bool AllAtTargets()
+    {
+        foreach (var a in agents)
+            if (!a.AtCircleTarget())
+                return false;
+        return true;
+    }
+
+    bool AllOriented()
+    {
+        foreach (var a in agents)
+            if (!a.IsOrientedToCenter())
+                return false;
+        return true;
     }
 
     void AssignPairs()

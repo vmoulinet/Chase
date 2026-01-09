@@ -1555,10 +1555,18 @@ MonoBehaviour:
   - {fileID: 447285048}
   - {fileID: 2075067137}
   - {fileID: 88769925}
-  minDistance: 0.87
-  maxDistance: 4.56
-  maxSpeed: 1.55
+  currentMode: 0
+  circlePhase: 0
+  minDistance: 0.82
+  maxDistance: 1.91
+  maxSpeed: 1.85
   toleranceRadius: 3.03
+  spiralInterval: 19.9
+  spiralDuration: 9.86
+  spiralStrength: 1.55
+  circleRadius: 1.56
+  circleHoldDuration: 5.47
+  center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1723029568
 PrefabInstance:
   m_ObjectHideFlags: 0
