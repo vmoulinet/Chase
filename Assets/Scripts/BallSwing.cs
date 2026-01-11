@@ -11,6 +11,9 @@ public class FoucaultPendulumBall : MonoBehaviour
     public float speed = 1f;
     public float cableLength = 10f;
 
+    [Header("Time")]
+    public float swingTimeScale = 1f;
+
     [Header("Cable Visuals")]
     public Material cableMaterial;
     public Color cableColor = Color.white;
@@ -21,31 +24,47 @@ public class FoucaultPendulumBall : MonoBehaviour
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
-        lr.positionCount = 2;
         lr.useWorldSpace = true;
+        lr.positionCount = 2;
 
         ApplyCableVisuals();
-    }
-
-    void ApplyCableVisuals()
-    {
-        lr.material = cableMaterial;
-        lr.startColor = cableColor;
-        lr.endColor = cableColor;
-        lr.startWidth = cableWidth;
-        lr.endWidth = cableWidth;
+        lr.enabled = false; // IMPORTANT : pas de preview en Editor
     }
 
     void Update()
     {
-        float x = Mathf.Sin(Time.time * speed) * amplitude;
-        transform.localPosition = new Vector3(x, -cableLength, 0f);
+        if (!Application.isPlaying)
+        {
+            lr.enabled = false;
+            return;
+        }
+
+        lr.enabled = true;
+
+        float t = Time.time * swingTimeScale;
+        float x = Mathf.Sin(t * speed) * amplitude;
+
+        transform.localPosition =
+            new Vector3(x, -cableLength, 0f);
     }
 
     void LateUpdate()
     {
+        if (!Application.isPlaying) return;
+
         lr.SetPosition(0, root.position);
         lr.SetPosition(1, transform.position);
+    }
+
+    void ApplyCableVisuals()
+    {
+        if (cableMaterial)
+            lr.material = cableMaterial;
+
+        lr.startColor = cableColor;
+        lr.endColor = cableColor;
+        lr.startWidth = cableWidth;
+        lr.endWidth = cableWidth;
     }
 
 #if UNITY_EDITOR
