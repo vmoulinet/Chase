@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SimpleCameraController : MonoBehaviour
 {
@@ -8,45 +9,62 @@ public class SimpleCameraController : MonoBehaviour
     public float minZoom = 5f;
     public float maxZoom = 100f;
 
-    private Vector3 dragOrigin;
+    Vector3 dragOrigin;
 
     void Update()
     {
-        // Rotation de la caméra (clic droit)
-        if (Input.GetMouseButton(1))
+        var mouse = Mouse.current;
+        var keyboard = Keyboard.current;
+
+        if (mouse == null || keyboard == null)
+            return;
+
+        // ---------------- ROTATION (clic droit)
+        if (mouse.rightButton.isPressed)
         {
-            float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
-            float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
+            Vector2 delta = mouse.delta.ReadValue();
+
+            float mouseX = delta.x * lookSpeed * Time.deltaTime;
+            float mouseY = delta.y * lookSpeed * Time.deltaTime;
 
             transform.eulerAngles += new Vector3(-mouseY, mouseX, 0f);
         }
 
-        // Zoom (molette)
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        // ---------------- ZOOM (molette)
+        float scroll = mouse.scroll.ReadValue().y * 0.01f;
         Vector3 direction = transform.forward * scroll * zoomSpeed;
         Vector3 newPos = transform.position + direction;
 
-        float distance = Vector3.Distance(Vector3.zero, newPos); // Distance depuis le centre
+        float distance = Vector3.Distance(Vector3.zero, newPos);
         if (distance >= minZoom && distance <= maxZoom)
             transform.position = newPos;
 
-        // Déplacement (clic molette ou WASD)
-        if (Input.GetMouseButtonDown(2))
-            dragOrigin = Input.mousePosition;
+        // ---------------- PAN (clic molette)
+        if (mouse.middleButton.wasPressedThisFrame)
+            dragOrigin = mouse.position.ReadValue();
 
-        if (Input.GetMouseButton(2))
+        if (mouse.middleButton.isPressed)
         {
-            Vector3 diff = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-            Vector3 move = new Vector3(-diff.x, -diff.y, 0) * moveSpeed;
+            Vector2 mousePos = mouse.position.ReadValue();
+            Vector3 diff = Camera.main.ScreenToViewportPoint(
+            new Vector3(mousePos.x - dragOrigin.x, mousePos.y - dragOrigin.y, 0f)
+        );
 
+
+            Vector3 move = new Vector3(-diff.x, -diff.y, 0f) * moveSpeed;
             transform.Translate(move, Space.Self);
-            dragOrigin = Input.mousePosition;
+
+            dragOrigin = mouse.position.ReadValue();
         }
 
-        // Déplacement clavier
-        float h = Input.GetAxis("Horizontal"); // A / D
-        float v = Input.GetAxis("Vertical");   // W / S
-        Vector3 keyboardMove = (transform.right * h + transform.forward * v) * moveSpeed * Time.deltaTime;
-        transform.position += keyboardMove;
+        // ---------------- DÉPLACEMENT CLAVIER (WASD)
+        Vector3 keyboardMove = Vector3.zero;
+
+        if (keyboard.aKey.isPressed) keyboardMove -= transform.right;
+        if (keyboard.dKey.isPressed) keyboardMove += transform.right;
+        if (keyboard.wKey.isPressed) keyboardMove += transform.forward;
+        if (keyboard.sKey.isPressed) keyboardMove -= transform.forward;
+
+        transform.position += keyboardMove * moveSpeed * Time.deltaTime;
     }
 }
