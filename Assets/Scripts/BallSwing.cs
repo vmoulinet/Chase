@@ -9,7 +9,8 @@ public class FoucaultPendulumBall : MonoBehaviour
     public Transform root;
 
     [Header("Swing")]
-    public float amplitude = 7f;
+    [Tooltip("Angle max du pendule en degrés")]
+    public float amplitude = 15f;
     public float speed = 1f;
     public float cableLength = 48.5f;
     public float swingTimeScale = 1f;
@@ -30,12 +31,9 @@ public class FoucaultPendulumBall : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
 
-        // 🔒 Rigidbody = collision only
         rb.useGravity = false;
         rb.isKinematic = true;
-        rb.interpolation = RigidbodyInterpolation.None;
 
-        // Line
         lr.useWorldSpace = true;
         lr.positionCount = 2;
         ApplyCableVisuals();
@@ -46,14 +44,16 @@ public class FoucaultPendulumBall : MonoBehaviour
     {
         phase += Time.deltaTime * speed * swingTimeScale;
 
-        float x = Mathf.Sin(phase) * amplitude;
+        // angle en radians
+        float angle = Mathf.Sin(phase) * Mathf.Deg2Rad * amplitude;
 
-        Vector3 worldPos =
+        float x = Mathf.Sin(angle) * cableLength;
+        float y = -Mathf.Cos(angle) * cableLength;
+
+        transform.position =
             root.position +
             root.right * x +
-            root.up * (-cableLength);
-
-        transform.position = worldPos;
+            root.up * y;
     }
 
     void LateUpdate()
