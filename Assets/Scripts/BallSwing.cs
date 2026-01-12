@@ -8,52 +8,55 @@ public class FoucaultPendulumBall : MonoBehaviour
     [Header("References")]
     public Transform root;
 
-    [Header("Swing")]
-    [Tooltip("Angle max du pendule en degrés")]
-    public float amplitude = 15f;
-    public float speed = 1f;
-    public float cableLength = 48.5f;
-    public float swingTimeScale = 1f;
+    [Header("Pendulum Physics")]
+    [Tooltip("Angle max en degrés (petits angles recommandés)")]
+    public float amplitude = 12f;
 
-    [Header("Cable")]
+    [Tooltip("Longueur du câble en mètres")]
+    public float cableLength = 48.5f;
+
+    [Header("Cable Visual")]
     public bool enableCable = true;
     public Material cableMaterial;
     public Color cableColor = Color.white;
     public float cableWidth = 0.02f;
 
+    const float g = 9.81f;
+
     LineRenderer lr;
     Rigidbody rb;
 
-    float phase;
+    float phase;     // angle d’oscillation
+    float omega;     // pulsation réelle (rad/s)
 
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
 
+        // Rigidbody = collisions only
         rb.useGravity = false;
         rb.isKinematic = true;
 
         lr.useWorldSpace = true;
         lr.positionCount = 2;
         ApplyCableVisuals();
-        lr.enabled = false;
+
+        // pulsation réelle du pendule
+        omega = Mathf.Sqrt(g / cableLength);
     }
 
     void Update()
     {
-        phase += Time.deltaTime * speed * swingTimeScale;
+        phase += omega * Time.deltaTime;
 
-        // angle en radians
         float angle = Mathf.Sin(phase) * Mathf.Deg2Rad * amplitude;
 
         float x = Mathf.Sin(angle) * cableLength;
         float y = -Mathf.Cos(angle) * cableLength;
 
-        transform.position =
-            root.position +
-            root.right * x +
-            root.up * y;
+        // LOCAL SPACE → précession conservée
+        transform.localPosition = new Vector3(x, y, 0f);
     }
 
     void LateUpdate()
@@ -87,8 +90,9 @@ public class FoucaultPendulumBall : MonoBehaviour
     {
         if (!lr) lr = GetComponent<LineRenderer>();
         ApplyCableVisuals();
-        if (!Application.isPlaying)
-            lr.enabled = false;
+
+        // recalcul si la longueur change en editor
+        omega = Mathf.Sqrt(g / Mathf.Max(0.01f, cableLength));
     }
 #endif
 }
