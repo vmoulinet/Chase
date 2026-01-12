@@ -945,6 +945,149 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2029958610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &556571844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9003323146575883303, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.38128
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38128
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38128
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.368
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.6941
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 73.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: -7023974396876390944, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: -2268138116939433651, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: -2090608591832345471, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: -241587437493983680, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 882129737928793925, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 919132149155446097, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Mirror '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786534777698132407, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 3699295531117829134, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 5670784105149147771, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 7339356831882890532, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    - target: {fileID: 8443713291819645580, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8233bbd9943c1e64cbb373d157211ac3, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82b7f55ce2d30304d9e1ea4b5cb92f47, type: 3}
 --- !u!114 &564427765 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3235056549265206324, guid: d2299cfe8203f354184a83abb105db83,
@@ -975,17 +1118,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &593377565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9041916113129808987, guid: d2299cfe8203f354184a83abb105db83,
@@ -1010,17 +1155,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &658072164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,17 +2080,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1054378823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9041916113129808987, guid: d2299cfe8203f354184a83abb105db83,
@@ -1974,17 +2123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1213255258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9041916113129808987, guid: d2299cfe8203f354184a83abb105db83,
@@ -2086,17 +2237,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1357984534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9041916113129808987, guid: d2299cfe8203f354184a83abb105db83,
@@ -2115,17 +2268,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1379984507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,17 +2332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1435803107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9041916113129808987, guid: d2299cfe8203f354184a83abb105db83,
@@ -2206,17 +2363,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &1491823435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,17 +2625,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1001 &1597754409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3424,17 +3585,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1001 &1963105454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3530,17 +3693,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -3729,17 +3894,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc7f9dd88d515b48967d0ec2f273aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentLoopAudio
-  chordEvent:
+  noteEvent:
     Guid:
-      Data1: 227515916
-      Data2: 1183022713
-      Data3: 1449561492
-      Data4: -1831399320
-    Path: event:/MirrorOst
-  noteParam: Note
-  modeParam: Mode
-  chordDegrees: 0000000003000000070000000a000000
-  updateInterval: 0.05
+      Data1: -32302344
+      Data2: 1285233446
+      Data3: -1865944156
+      Data4: 460263626
+    Path: event:/Note
+  distanceParam: Distance
+  minDistance: 0.5
+  maxDistance: 3
+  triggerRadius: 2
+  cooldown: 0.15
+  centerTransform: {fileID: 0}
 --- !u!1 &2123217518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,9 +4037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoucaultSwing
   root: {fileID: 322322784}
   amplitude: 13.6
-  speed: 2.82
   cableLength: 48.5
-  swingTimeScale: 1
   enableCable: 1
   cableMaterial: {fileID: 0}
   cableColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4075,3 +4240,4 @@ SceneRoots:
   - {fileID: 322322784}
   - {fileID: 960283324}
   - {fileID: 423409738}
+  - {fileID: 556571844}
