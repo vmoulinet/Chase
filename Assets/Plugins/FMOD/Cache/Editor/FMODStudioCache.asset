@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: -1865944156
     Data4: 460263626
   Banks:
-  - {fileID: 1170267719060003269}
+  - {fileID: -4636400162633876970}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6342
---- !u!114 &-2539805410625379569
+--- !u!114 &-4636400162633876970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,23 +37,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: ../../../Documents/FMOD Studio/Recrea/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639038297769400380
+  Path: Assets/BANKS/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639038357188449620
   FileSizes:
-  - Name: 
-    Value: 804
-  - Name: 
-    Value: 804
-  - Name: Assets
-    Value: 804
   - Name: Desktop
-    Value: 804
-  - Name: Metadata
-    Value: 804
+    Value: 44224
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -68,18 +60,18 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: -2539805410625379569}
-  - {fileID: 1170267719060003269}
+  - {fileID: 5482466835835480565}
+  - {fileID: -4636400162633876970}
   EditorEvents:
   - {fileID: -4659735356736607615}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1170267719060003269}
+  - {fileID: -4636400162633876970}
   StringsBanks:
-  - {fileID: -2539805410625379569}
-  cacheTime: 639038297769400380
+  - {fileID: 5482466835835480565}
+  cacheTime: 639038357188461777
   cacheVersion: 131634
---- !u!114 &1170267719060003269
+--- !u!114 &5482466835835480565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,13 +81,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: ../../../Documents/FMOD Studio/Recrea/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639038297769374441
+  Path: Assets/BANKS/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639038357188461777
   FileSizes:
   - Name: Desktop
-    Value: 44224
+    Value: 804
   Exists: 1
