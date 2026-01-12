@@ -6,20 +6,20 @@ using FMOD.Studio;
 public class AgentLoopAudio : MonoBehaviour
 {
     [Header("FMOD")]
-    public EventReference chordEvent;      // event:/Chord/Note
-    public string noteParam = "Note";      // "Note" (index) or "Semitone"
-    public string modeParam = "Mode";      // optional
+    public EventReference noteEvent;          // Assign in Inspector
+    public string distanceParam = "Distance"; // FMOD parameter (0..1)
 
-    [Header("Chord Degrees (semitones from root)")]
-    public int[] chordDegrees = { 0, 3, 7, 10 }; // minor7 example
+    [Header("Distance Settings")]
+    public float minDistance = 0.5f;          // 0.0 in FMOD
+    public float maxDistance = 3.0f;          // 1.0 in FMOD
+    public float triggerRadius = 3.0f;         // must be <= maxDistance
+    public float cooldown = 0.2f;
 
-    [Header("Timing")]
-    public float updateInterval = 0.05f;
+    [Header("Reference Point (optional)")]
+    public Transform centerTransform;          // If null, uses TriangleManager.center
 
     private TriangleAgent agent;
-    private EventInstance inst;
-    private bool playing;
-    private float timer;
+    private float cooldownTimer;
 
     void Start()
     {
@@ -28,80 +28,54 @@ public class AgentLoopAudio : MonoBehaviour
 
     void Update()
     {
+        if (cooldownTimer > 0f)
+            cooldownTimer -= Time.deltaTime;
+
         if (agent == null || agent.manager == null)
             return;
 
-        TriangleManager mgr = agent.manager;
+        Vector3 center = GetCenterPoint();
 
-        // Play only in Spiral or Circle (change if you want Triangle too)
-        bool active =
-            mgr.currentMode == TriangleManager.GlobalMode.Spiral ||
-            mgr.currentMode == TriangleManager.GlobalMode.Circle;
+        Vector3 delta = transform.position - center;
+        delta.y = 0f;
 
-        if (active && !playing) StartVoice();
-        if (!active && playing) StopVoice();
+        float distance = delta.magnitude;
 
-        if (!playing)
+        if (distance > triggerRadius)
             return;
 
-        timer += Time.deltaTime;
-        if (timer < updateInterval)
-            return;
-        timer = 0f;
-
-        // Your manager uses one shared center for spiral + circle
-        Vector3 center = mgr.center;
-
-        Vector3 v = transform.position - center;
-        v.y = 0f;
-
-        if (v.sqrMagnitude < 0.0001f)
+        if (cooldownTimer > 0f)
             return;
 
-        float angle = Mathf.Atan2(v.z, v.x);               // -PI..PI
-        float t = (angle + Mathf.PI) / (2f * Mathf.PI);    // 0..1
+        PlayOneShot(distance);
+        cooldownTimer = cooldown;
+    }
 
-        int idx = Mathf.Clamp(
-            Mathf.FloorToInt(t * chordDegrees.Length),
-            0,
-            chordDegrees.Length - 1
-        );
+    Vector3 GetCenterPoint()
+    {
+        if (centerTransform != null)
+            return centerTransform.position;
 
-        // If FMOD param is an index 0..(len-1):
-        inst.setParameterByName(noteParam, idx);
+        return agent.manager.center;
+    }
 
-        // If FMOD param expects semitones, use this instead:
-        // inst.setParameterByName(noteParam, chordDegrees[idx]);
-
-        // Optional mode param: 0=Triangle, 1=Spiral, 2=Circle
-        if (!string.IsNullOrEmpty(modeParam))
+    void PlayOneShot(float distance)
+    {
+        if (noteEvent.IsNull)
         {
-            float mode = (float)mgr.currentMode;
-            inst.setParameterByName(modeParam, mode);
+            Debug.LogError($"{nameof(AgentLoopAudio)} on '{gameObject.name}': noteEvent not assigned.");
+            return;
         }
-    }
 
-    void StartVoice()
-    {
-        inst = RuntimeManager.CreateInstance(chordEvent);
-        RuntimeManager.AttachInstanceToGameObject(inst, transform);
-        inst.start();
-        playing = true;
-    }
+        // Normalize distance to 0..1
+        float normalizedDistance = Mathf.InverseLerp(minDistance, maxDistance, distance);
 
-    void StopVoice()
-    {
-        if (inst.isValid())
-        {
-            inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // <-- unambiguous
-            inst.release();
-        }
-        playing = false;
-    }
+        EventInstance e = RuntimeManager.CreateInstance(noteEvent);
+        RuntimeManager.AttachInstanceToGameObject(e, transform);
 
-    void OnDestroy()
-    {
-        if (playing)
-            StopVoice();
+        e.setParameterByName(distanceParam, normalizedDistance);
+
+        e.start();
+        e.release(); // important for one-shots
     }
 }

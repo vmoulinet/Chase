@@ -537,7 +537,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 1
   sourceProjectPath: 
-  sourceBankPath: Assets
+  sourceBankPath: ../../../Documents/FMOD Studio/Recrea
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 0
