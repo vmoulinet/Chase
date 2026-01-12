@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2746379637800907240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639038280319555770
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 6062116234755719947}
+  - {fileID: -2746379637800907240}
+  EditorEvents: []
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -2746379637800907240}
+  StringsBanks:
+  - {fileID: 6062116234755719947}
+  cacheTime: 639038280319581159
+  cacheVersion: 131634
+--- !u!114 &6062116234755719947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639038280319581159
+  FileSizes:
+  - Name: BACKUP SCRIPTS
+    Value: 762
+  - Name: Desktop
+    Value: 762
+  - Name: FMOD
+    Value: 762
+  - Name: Material
+    Value: 762
+  - Name: Models
+    Value: 762
+  - Name: Plugins
+    Value: 762
+  - Name: Prefabs
+    Value: 762
+  - Name: Scenes
+    Value: 762
+  - Name: Scripts
+    Value: 762
+  - Name: Settings
+    Value: 762
+  - Name: TextMesh Pro
+    Value: 762
+  - Name: Textures
+    Value: 762
+  - Name: TutorialInfo
+    Value: 762
+  Exists: 1
