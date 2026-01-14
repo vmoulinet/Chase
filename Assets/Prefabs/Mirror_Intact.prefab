@@ -166,6 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableMirror
   fracturedRoot: {fileID: 0}
-  breakForce: 5.95
-  breakRadius: 1.2
-  freezeDelay: 1.5
+  breakForce: 0.58
+  breakRadius: 1.05
